@@ -12,9 +12,11 @@ setAuthorizationHeader(accessToken);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <App isInitiallyLogged={!!accessToken} />
+    </Router>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 
