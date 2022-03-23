@@ -1,7 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 
-import { ReactComponent as Icon } from '../../assets/twitter.svg';
+import { ReactComponent as Icon } from '../../assets/example.svg';
 
 import './Header.css';
 import AuthButton from '../auth/AuthButton';
@@ -17,19 +17,19 @@ function Header({ className }) {
       </Link>
       <nav className="header-nav">
         <NavLink
-          to="/tweets/new"
+          to="/adverts/new"
           // className={({ isActive }) => (isActive ? 'active' : '')}
           style={({ isActive }) => (isActive ? { color: 'green' } : null)}
         >
-          New Tweet
+          New advert
         </NavLink>
         <NavLink
-          to="/tweets"
+          to="/adverts"
           // className={({ isActive }) => (isActive ? 'active' : '')}
           style={({ isActive }) => (isActive ? { color: 'green' } : null)}
           end
         >
-          See all tweets
+          See all adverts
         </NavLink>
         <AuthButton className="header-button" />
       </nav>

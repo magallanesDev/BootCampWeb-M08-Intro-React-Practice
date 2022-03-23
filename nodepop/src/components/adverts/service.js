@@ -12,7 +12,9 @@ export const getAdvert = advertId => {
   return client.get(url);
 };
 
-export const createAdvert = advert => {
+
+
+export const createAdvert = formData => {
   const url = advertsBaseUrl;
-  return client.post(url, advert);
+  return client.post(url, formData );
 };

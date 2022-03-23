@@ -10,7 +10,7 @@ function Layout() {
       <main className="layout-main bordered">
         <Outlet />
       </main>
-      <footer className="layout-footer bordered">© 2022 Keepcoding</footer>
+      <footer className="layout-footer bordered">© 2022 magallanesDev</footer>
     </div>
   );
 }
