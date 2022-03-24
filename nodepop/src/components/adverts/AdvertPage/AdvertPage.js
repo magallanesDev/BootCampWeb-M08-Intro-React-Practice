@@ -1,13 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import Page from '../../layout/Page';
+
+import Advert from '../AdvertsPage/Advert';
+
 import { getAdvert } from '../service';
 
 class AdvertPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tweet: null,
+      advert: null,
       error: null,
       isLoading: false,
     };
@@ -49,38 +52,20 @@ class AdvertPage extends React.Component {
       return <Navigate to="/login" />;
     }
 
+    // redirects to Not Found Page
     if (error?.status === 404) {
       return <Navigate to="/404" />;
     }
 
     return (
-      <Page title="Advert detail">
-        <div>{advert ? JSON.stringify(advert) : 'Nothing to show'}</div>
+      <Page title="Advert detail"> 
+        <div>
+        <Advert { ...advert } />
+        </div>  
       </Page>
     );
   }
 }
-
-// const TweetPageFunction = () => {
-//   const [tweet, setTweet] = useState(null);
-//   const { tweetId } = useParams();
-//   // return <TweetPage tweetId={tweetId} />;
-
-//   useEffect(() => {
-//     getTweet(tweetId).then(tweet => setTweet(tweet));
-
-//     return () => {
-//       // tweet 1
-//       console.log('unmounted');
-//     };
-//   }, [tweetId]);
-
-//   return (
-//     <Page title="Tweet detail">
-//       <div>{tweet ? JSON.stringify(tweet) : 'Nothing to show'}</div>
-//     </Page>
-//   );
-// };
 
 const AdvertPageFunction = () => {
   const ref = useRef(null);

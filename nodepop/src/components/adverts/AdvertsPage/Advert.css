@@ -3,7 +3,7 @@
   cursor: pointer;
   display: flex;
   padding: 10px 15px 0 15px;
-  transition: background-color 0.2s;
+  transition: background-color 0.5s;
 }
 
 .advert:hover {
@@ -12,25 +12,12 @@
 
 .advert-header {
   color: rgb(101, 119, 134);
-  margin-bottom: 2px;
-}
-
-.advert-actions {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-  max-width: 425px;
+  margin-top: 40px;
+  margin-left: 50px;
 }
 
 .advert-name {
   color: rgb(20, 23, 26);
   font-weight: bold;
-}
-
-.advert-username {
-  margin-left: 5px;
-}
-
-.advert-separator {
-  padding: 0 5px;
+  padding: 0.35rem;
 }

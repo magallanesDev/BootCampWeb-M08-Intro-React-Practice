@@ -1,6 +1,4 @@
-
 import Page from '../../layout/Page';
-
 import Button from '../../common/Button';
 import FormField from '../../common/FormField';
 
