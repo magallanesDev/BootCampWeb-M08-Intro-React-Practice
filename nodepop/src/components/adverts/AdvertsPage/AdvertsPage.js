@@ -21,7 +21,6 @@ const useAdverts = () => {
   const [adverts, setAdverts] = useState([]);
 
   useEffect(() => {
-    // getLatestTweets().then(tweets => setTweets(tweets));
     const execute = async () => {
       const adverts = await getLatestAdverts();
       setAdverts(adverts);
@@ -38,7 +37,7 @@ const AdvertsPage = () => {
   const adverts = useAdverts();
 
   return (
-    <Page title="What's going on...">
+    <Page title="Adverts list">
       <div className={styles.advertsPage}>
         {adverts.length ? (
           <ul>
