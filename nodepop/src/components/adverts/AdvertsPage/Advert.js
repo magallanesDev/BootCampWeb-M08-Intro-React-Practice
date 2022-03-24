@@ -3,12 +3,19 @@ import React from 'react';
 import Photo from '../../common/Photo';
 import './Advert.css';
 
-const Advert = ({ id, createdAt, name, sale, price, tags, photo }) => {
+const Advert = ({ name, sale, price, tags, photo }) => {
   return (
     <article className="advert bordered">
       <div className="left">
-        <Photo className="advert-photo" src={photo}/>
+        {
+          photo === null ? (
+            <Photo className="advert-photo" />
+          ) : (
+            <Photo className="advert-photo" src={photo} />
+          )
+        }
       </div>
+
       <div className="advert-header">
         <ul>
           <li className="advert-name" key="1">
