@@ -1,10 +1,15 @@
+import { Link } from 'react-router-dom';
 import React, { useEffect, useRef, useState } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
+import Button from '../../common/Button';
 import Page from '../../layout/Page';
 
 import Advert from '../AdvertsPage/Advert';
 
-import { getAdvert } from '../service';
+import { getAdvert, deleteAdvert } from '../service';
+
+import './AdvertPage.css';
+
 
 class AdvertPage extends React.Component {
   constructor(props) {
@@ -26,6 +31,17 @@ class AdvertPage extends React.Component {
     }
   };
 
+  handleDeleteClick = async () => {
+    this.setState({ isLoading: true, error: null });
+    try {
+      const advert = await deleteAdvert(this.props.advertId);
+      this.setState({ advert, isLoading: false });
+    } catch (error) {
+      this.setState({ isLoading: false, error });
+    }
+  };
+  
+
   componentDidMount() {
     this.handleGetAdvert();
   }
@@ -39,10 +55,11 @@ class AdvertPage extends React.Component {
   }
 
   componentWillUnmount() {
-    console.log('unmont');
+    console.log('unmount');
     // clean tasks
   }
 
+  
   render() {
     const { advert, error, isLoading } = this.state;
 
@@ -60,8 +77,13 @@ class AdvertPage extends React.Component {
     return (
       <Page title="Advert detail"> 
         <div>
-        <Advert { ...advert } />
-        </div>  
+          <Advert { ...advert } />
+        </div>
+        <div className="delete-button">
+          <Button as={Link} to="/adverts" onClick={this.handleDeleteClick}>
+            Delete Advert
+          </Button>
+        </div>
       </Page>
     );
   }

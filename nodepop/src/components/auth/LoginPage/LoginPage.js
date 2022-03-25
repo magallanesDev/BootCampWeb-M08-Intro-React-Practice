@@ -72,7 +72,7 @@ function LoginPage({ onLogin }) {
           className="loginForm-field"
           value={email}
           onChange={handleChange}
-          // ref={ref}
+          ref={ref}
         />
         <FormField
           type="password"
@@ -81,7 +81,7 @@ function LoginPage({ onLogin }) {
           className="loginForm-field"
           value={password}
           onChange={handleChange}
-          ref={ref}
+          // ref={ref}
         />
         <input
           type="checkbox"

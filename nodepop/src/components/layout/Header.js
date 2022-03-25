@@ -1,7 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 
-import { ReactComponent as Icon } from '../../assets/example.svg';
+import { ReactComponent as Icon } from '../../assets/nodepopIcon.svg';
 
 import './Header.css';
 import AuthButton from '../auth/AuthButton';

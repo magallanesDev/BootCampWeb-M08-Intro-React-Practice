@@ -13,7 +13,7 @@ function AuthButton({ className }) {
   };
 
   return isLogged ? (
-    <Button className={className} onClick={handleLogoutClick}>
+    <Button as={Link} to="/login" className={className} onClick={handleLogoutClick}>
       Logout
     </Button>
   ) : (
