@@ -3,12 +3,13 @@ import Button from '../../common/Button';
 import FormField from '../../common/FormField';
 
 import './NewAdvertPage.css';
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback, useRef, useEffect } from 'react';
 import { createAdvert } from '../service';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 const NewAdvertPage = () => {
-  const navigate = useNavigate();
+  const ref = useRef(null);
+  //const navigate = useNavigate();
   const [content, setContent] = useState({
     name: '',
     sale: '',
@@ -19,6 +20,11 @@ const NewAdvertPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [createdAdvert, setCreatedAdvert] = useState(null);
+
+  useEffect(() => {
+    console.log(ref.current);
+    ref.current.focus();
+  }, []);
 
 
   const { name, sale, tags, price, photo } = content;
@@ -69,6 +75,7 @@ const NewAdvertPage = () => {
               className="loginForm-field"
               value={name}
               onChange={handleChange}
+              ref={ref}
             />
             <FormField
               type="boolean"
