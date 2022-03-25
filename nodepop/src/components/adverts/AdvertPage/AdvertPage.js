@@ -32,12 +32,10 @@ class AdvertPage extends React.Component {
   };
 
   handleDeleteClick = async () => {
-    this.setState({ isLoading: true, error: null });
     try {
-      const advert = await deleteAdvert(this.props.advertId);
-      this.setState({ advert, isLoading: false });
+      await deleteAdvert(this.props.advertId);
     } catch (error) {
-      this.setState({ isLoading: false, error });
+      console.log(error)
     }
   };
   

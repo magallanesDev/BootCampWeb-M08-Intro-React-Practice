@@ -28,7 +28,7 @@ const useAdverts = () => {
     execute();
 
     return () => {};
-  }, []);
+  }, [adverts]);
 
   return adverts;
 };
