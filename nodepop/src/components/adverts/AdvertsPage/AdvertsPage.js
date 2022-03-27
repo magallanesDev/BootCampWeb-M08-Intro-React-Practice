@@ -25,7 +25,7 @@ const AdvertsPage = () => {
     searchSale: '',
     searchTags: '',
     searchPriceMin: 0,
-    searchPriceMax: 999999,
+    searchPriceMax: 99999,
 
   });
 

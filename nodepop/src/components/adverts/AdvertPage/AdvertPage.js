@@ -33,12 +33,14 @@ class AdvertPage extends React.Component {
 
   handleDeleteClick = async () => {
     try {
-      await deleteAdvert(this.props.advertId);
+      if (window.confirm('Are you sure to delete this advert?')) {
+        await deleteAdvert(this.props.advertId);
+      }
+      return;
     } catch (error) {
       console.log(error)
     }
   };
-  
 
   componentDidMount() {
     this.handleGetAdvert();
