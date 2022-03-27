@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import Page from '../../layout/Page';
 import Button from '../../common/Button';
 import Advert from './Advert';
+import FormField from '../../common/FormField';
 import { getLatestAdverts } from '../service';
 
 import './AdvertsPage.css';
-import styles from './AdvertsPage.module.css';
 
 const EmptyList = () => (
   <div style={{ textAlign: 'center' }}>
@@ -17,8 +17,21 @@ const EmptyList = () => (
   </div>
 );
 
-const useAdverts = () => {
+const AdvertsPage = () => {
   const [adverts, setAdverts] = useState([]);
+  const [searchName, setSearchName] = useState('');
+
+  const handleChange = event => {
+    setSearchName(event.target.value);
+    console.log(event.target.value);
+  };
+
+  const filteredAdverts = adverts.filter(advert => {
+    if (advert.name.toLowerCase().includes(searchName.toLowerCase())) {
+      return true;
+    }
+    return false;
+  });
 
   useEffect(() => {
     const execute = async () => {
@@ -28,27 +41,34 @@ const useAdverts = () => {
     execute();
 
     return () => {};
-  }, [adverts]);
-
-  return adverts;
-};
-
-const AdvertsPage = () => {
-  const adverts = useAdverts();
+  }, [adverts, filteredAdverts]);
 
   return (
     <Page title="Adverts list">
-      <div className={styles.advertsPage}>
+      <div>
         {adverts.length ? (
-          <ul>
-            {adverts.map(advert => (
-              <li key={advert.id}>
-                <Link to={`/adverts/${advert.id}`}>
-                  <Advert {...advert} />
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <div>
+            <form className="loginForm">
+              <FormField
+                type="text"
+                name="searchName"
+                label="Filter by name"
+                className="loginForm-field"
+                value={searchName}
+                onChange={handleChange}
+              />
+            </form>
+
+            <ul>
+              {filteredAdverts.map(advert => (
+                <li key={advert.id}>
+                  <Link to={`/adverts/${advert.id}`}>
+                    <Advert {...advert} />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         ) : (
           <EmptyList />
         )}
