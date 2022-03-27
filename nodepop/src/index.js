@@ -9,7 +9,6 @@ import { BrowserRouter as Router } from 'react-router-dom';
 const accessToken = storage.get('auth');
 setAuthorizationHeader(accessToken);
 
-
 ReactDOM.render(
   <React.StrictMode>
     <Router>
@@ -18,5 +17,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root'),
 );
-
-

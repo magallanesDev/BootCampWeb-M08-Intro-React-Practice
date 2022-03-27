@@ -5,7 +5,6 @@ import client, {
 import storage from '../../utils/storage';
 
 export const login = ({ remember, ...credentials }) => {
-
   return client.post('/api/auth/login', credentials).then(({ accessToken }) => {
     setAuthorizationHeader(accessToken);
 

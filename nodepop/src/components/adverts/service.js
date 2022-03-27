@@ -14,7 +14,7 @@ export const getAdvert = advertId => {
 
 export const createAdvert = formData => {
   const url = advertsBaseUrl;
-  return client.post(url, formData );
+  return client.post(url, formData);
 };
 
 export const deleteAdvert = advertId => {

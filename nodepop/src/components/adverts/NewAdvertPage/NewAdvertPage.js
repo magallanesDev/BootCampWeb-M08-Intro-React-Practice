@@ -26,9 +26,8 @@ const NewAdvertPage = () => {
     ref.current.focus();
   }, []);
 
-
   const { name, sale, tags, price, photo } = content;
-  
+
   const handleChange = useCallback(event => {
     setContent(content => ({
       ...content,
@@ -38,7 +37,7 @@ const NewAdvertPage = () => {
 
   const handleSubmit = async event => {
     event.preventDefault();
-    const formData = new FormData(document.querySelector("form"));
+    const formData = new FormData(document.querySelector('form'));
     console.log(formData);
     try {
       const advert = await createAdvert(formData);
@@ -50,9 +49,7 @@ const NewAdvertPage = () => {
   };
 
   const buttonDisabled = useMemo(() => {
-    return (
-      !name || !sale || !tags || !price || isLoading
-    );
+    return !name || !sale || !tags || !price || isLoading;
   }, [name, sale, tags, price, isLoading]);
 
   if (createdAdvert) {

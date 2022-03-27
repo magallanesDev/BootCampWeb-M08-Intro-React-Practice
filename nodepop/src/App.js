@@ -9,7 +9,6 @@ import AdvertsPage from './components/adverts/AdvertsPage/AdvertsPage';
 import { AuthContextProvider } from './components/auth/context';
 import Layout from './components/layout/Layout';
 
-
 function App({ isInitiallyLogged }) {
   const [isLogged, setIsLogged] = useState(isInitiallyLogged);
 
@@ -46,6 +45,5 @@ function App({ isInitiallyLogged }) {
     </div>
   );
 }
-
 
 export default App;

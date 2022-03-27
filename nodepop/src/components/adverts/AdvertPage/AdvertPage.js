@@ -10,7 +10,6 @@ import { getAdvert, deleteAdvert } from '../service';
 
 import './AdvertPage.css';
 
-
 class AdvertPage extends React.Component {
   constructor(props) {
     super(props);
@@ -38,7 +37,7 @@ class AdvertPage extends React.Component {
       }
       return;
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 
@@ -59,7 +58,6 @@ class AdvertPage extends React.Component {
     // clean tasks
   }
 
-  
   render() {
     const { advert, error, isLoading } = this.state;
 
@@ -75,9 +73,9 @@ class AdvertPage extends React.Component {
     }
 
     return (
-      <Page title="Advert detail"> 
+      <Page title="Advert detail">
         <div>
-          <Advert { ...advert } />
+          <Advert {...advert} />
         </div>
         <div className="delete-button">
           <Button as={Link} to="/adverts" onClick={this.handleDeleteClick}>
