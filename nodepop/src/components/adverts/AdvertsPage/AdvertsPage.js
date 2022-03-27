@@ -24,28 +24,24 @@ const AdvertsPage = () => {
     searchSale: '',
     searchTags: '',
     searchPrice: '',
-});
-  
+  });
 
-  const { searchName, searchSale, searchTags, searchPrice} = filters;
+  const { searchName, searchSale, searchTags, searchPrice } = filters;
 
   const handleChange = useCallback(event => {
     setFilters(filters => ({
       ...filters,
-      [event.target.name] : event.target.value,
+      [event.target.name]: event.target.value,
     }));
   }, []);
 
-  
-  
   const filteredAdverts = adverts.filter(advert => {
-    
     if (
-      (advert.name.toLowerCase().includes(searchName.toLowerCase()))  &&
-      (String(advert.sale).toLowerCase().includes(searchSale.toLowerCase())) &&
-      (String(advert.tags).toLowerCase().includes(searchTags.toLowerCase())) &&
-      (String(advert.price).includes(searchPrice))
-    ) { 
+      advert.name.toLowerCase().includes(searchName.toLowerCase()) &&
+      String(advert.sale).toLowerCase().includes(searchSale.toLowerCase()) &&
+      String(advert.tags).toLowerCase().includes(searchTags.toLowerCase()) &&
+      String(advert.price).includes(searchPrice)
+    ) {
       return true;
     }
     return false;
@@ -59,7 +55,7 @@ const AdvertsPage = () => {
     execute();
 
     return () => {};
-  }, [adverts, filteredAdverts]);
+  }, [filteredAdverts]);
 
   return (
     <Page title="Adverts list">
@@ -76,9 +72,9 @@ const AdvertsPage = () => {
                 onChange={handleChange}
               />
               <FormField
-                type="text"
+                type="boolean"
                 name="searchSale"
-                label="Filter by sale"
+                label="Filter by sale (true / false)"
                 className="loginForm-field"
                 value={searchSale}
                 onChange={handleChange}
@@ -86,7 +82,7 @@ const AdvertsPage = () => {
               <FormField
                 type="text"
                 name="searchTags"
-                label="Filter by tags"
+                label="Filter by tags - lifestyle, mobile, motor, work - (one or more separated by commas)"
                 className="loginForm-field"
                 value={searchTags}
                 onChange={handleChange}
@@ -94,13 +90,12 @@ const AdvertsPage = () => {
               <FormField
                 type="number"
                 name="searchPrice"
-                label="Filter by price"
+                label="Filter by price €"
                 className="loginForm-field"
                 value={searchPrice}
                 onChange={handleChange}
               />
             </form>
-
             <ul>
               {filteredAdverts.map(advert => (
                 <li key={advert.id}>

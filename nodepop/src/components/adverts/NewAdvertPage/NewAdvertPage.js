@@ -81,7 +81,6 @@ const NewAdvertPage = () => {
               type="boolean"
               name="sale"
               label="Sale (true / false)"
-              //placeholder="true / false"
               className="loginForm-field"
               value={sale}
               onChange={handleChange}
@@ -89,7 +88,7 @@ const NewAdvertPage = () => {
             <FormField
               type="text"
               name="tags"
-              label="Tags (lifestyle, mobile, motor, work)"
+              label="Tags - lifestyle, mobile, motor, work - (one or more separated by commas)"
               className="loginForm-field"
               value={tags}
               onChange={handleChange}
