@@ -25,7 +25,7 @@ const Advert = ({ name, sale, price, tags, photo }) => {
             SALE: {String(sale)}
           </li>
           <li className="advert-name" key="3">
-            TAGS: {tags}
+            TAGS: {String(tags)}
           </li>
           <li className="advert-name" key="4">
             PRICE: {price}€

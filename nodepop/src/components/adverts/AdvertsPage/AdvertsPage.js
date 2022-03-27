@@ -8,6 +8,7 @@ import { getLatestAdverts } from '../service';
 
 import './AdvertsPage.css';
 
+
 const EmptyList = () => (
   <div style={{ textAlign: 'center' }}>
     <p>Be the first advert!</p>
@@ -23,10 +24,12 @@ const AdvertsPage = () => {
     searchName: '',
     searchSale: '',
     searchTags: '',
-    searchPrice: '',
+    searchPriceMin: 0,
+    searchPriceMax: 999999,
+
   });
 
-  const { searchName, searchSale, searchTags, searchPrice } = filters;
+  const { searchName, searchSale, searchTags, searchPriceMin, searchPriceMax } = filters;
 
   const handleChange = useCallback(event => {
     setFilters(filters => ({
@@ -40,7 +43,7 @@ const AdvertsPage = () => {
       advert.name.toLowerCase().includes(searchName.toLowerCase()) &&
       String(advert.sale).toLowerCase().includes(searchSale.toLowerCase()) &&
       String(advert.tags).toLowerCase().includes(searchTags.toLowerCase()) &&
-      String(advert.price).includes(searchPrice)
+      (advert.price > searchPriceMin) && (advert.price < searchPriceMax) 
     ) {
       return true;
     }
@@ -89,10 +92,18 @@ const AdvertsPage = () => {
               />
               <FormField
                 type="number"
-                name="searchPrice"
-                label="Filter by price €"
+                name="searchPriceMin"
+                label="Filter by price € (MIN)"
                 className="loginForm-field"
-                value={searchPrice}
+                value={searchPriceMin}
+                onChange={handleChange}
+              />
+              <FormField
+                type="number"
+                name="searchPriceMax"
+                label="Filter by price € (MAX)"
+                className="loginForm-field"
+                value={searchPriceMax}
                 onChange={handleChange}
               />
             </form>
